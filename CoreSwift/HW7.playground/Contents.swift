@@ -34,20 +34,12 @@ print("\n#1\n")
 
 // По логике такой класс никогда не должен создаваться. Как реализуются в Swift абстрактные классы?
 class Shape {
-    var height: Float?
-    var width: Float?
-    var radius: Float?
+    // Эти параметры не должны здесь находиться!
+    //var height: Float?
+    //var width: Float?
+    //var radius: Float?
     var square: Float?
     var perimeter: Float?
-    
-    init(height: Float, width: Float) {
-        self.height = height
-        self.width = width
-    }
-    
-    init(radius: Float) {
-        self.radius = radius
-    }
     
     // Этот метод не должен иметь реализации, это тоже должен быть абстрактный метод
     func squareOfShape() -> Float? {
@@ -76,6 +68,12 @@ class Shape {
 }
 
 class Circle: Shape {
+    var radius: Float?
+    
+    init(radius: Float) {
+        self.radius = radius
+    }
+    
     override func squareOfShape() -> Float? {
         if let radius = self.radius {
             square = Float.pi * radius * radius
@@ -96,6 +94,14 @@ class Circle: Shape {
 }
 
 class Rectangle: Shape {
+    var height: Float?
+    var width: Float?
+    
+    init(height: Float, width: Float) {
+        self.height = height
+        self.width = width
+    }
+    
     override func squareOfShape() -> Float? {
         if let height = height, let width = width {
             square = height * width
@@ -117,6 +123,14 @@ class Rectangle: Shape {
 }
 
 class Ellipse: Shape {
+    var height: Float?
+    var width: Float?
+    
+    init(height: Float, width: Float) {
+        self.height = height
+        self.width = width
+    }
+    
     override func squareOfShape() -> Float? {
         if let height = height, let width = width {
             square = Float.pi * height * width
